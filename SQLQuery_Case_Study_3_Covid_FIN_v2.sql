@@ -37,10 +37,10 @@ ORDER BY 1,2
 --Let's look at countries that have the highest infection rate compared to population
 
 SELECT location, population, MAX(TRY_CAST(total_cases AS NUMERIC)) as highest_infection_count, 
-MAX((TRY_CAST(total_cases AS NUMERIC)/NULLIF(TRY_CAST(population AS NUMERIC), 0)*100)) as highest_infection_rate
+MAX((TRY_CAST(total_cases AS NUMERIC)/NULLIF(TRY_CAST(population AS NUMERIC), 0)*100)) as infection_rate_percentage
 FROM PortfolioCaseStudy3_Covid.dbo.Covid_Deaths
 GROUP BY location, population
-ORDER BY highest_infection_rate DESC
+ORDER BY infection_rate_percentage DESC
 
 --Let's look at the countries with the highest death count relative to population
 
